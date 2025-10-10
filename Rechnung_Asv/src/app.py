@@ -6,7 +6,7 @@ import json
 import os
 from helpers import baue_rechnung_dict
 from config import PFAD_PREISLISTE_DATEN
-from services import rechnungspositionen_erstellen, import_new_data, rechnungspositionen_erstellen_csv_upload, rechnung_dict_csv
+from services import rechnungspositionen_erstellen, import_new_data, rechnung_dict_csv
 from streamlit_option_menu import option_menu
 
 # --- Seite konfigurieren ---
@@ -19,6 +19,7 @@ try:
         daten = json.load(f)
     df_preisliste = pd.DataFrame.from_dict(daten, orient="index")
     df_preisliste.index.name = "ID"
+    df_preisliste = df_preisliste.dropna(how='all', axis=0) 
 except FileNotFoundError:
     df_preisliste = pd.DataFrame()
 
@@ -136,18 +137,12 @@ def seite_csv_upload():
             df_csv = pd.read_csv(hochgeladene_datei, sep=";", dtype=str)
             st.write("Vorschau der CSV-Daten:")
             st.dataframe(df_csv)
-            rechnung_dict = rechnung_dict_csv(df_csv)
         except Exception as e:
             st.error(f"Fehler beim Einlesen der Datei: {e}")
 
         if st.button("Rechnungen aus CSV erstellen und speichern"):
-                ergebnis = rechnungspositionen_erstellen_csv_upload(
-                    rechnung_dict=rechnung_dict
-                )
-                if ergebnis:
-                    st.success("Rechnungen wurde erstellt und gespeichert.") 
-                else:
-                    st.error("Es gab ein Problem beim Erstellen der Rechnung.")
+                rechnung_dict_csv(df_csv)
+                st.success("Rechnungen wurden erstellt und gespeichert.")
     
 
 # --- Haupt-Logik: Auswahl und Anzeige ---

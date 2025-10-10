@@ -9,6 +9,7 @@ ORDNER_APP =    ORDNER_REPO / "src"
 ORDNER_DATA =   ORDNER_REPO / "data" / str(datetime.now().year)
 ORDNER_IMPORT = ORDNER_REPO / "import"
 ORDNER_DOCS = ORDNER_REPO / "docs" / str(datetime.now().year)
+# Sicherstellen, dass die Ordner existieren
 ORDNER_DOCS.mkdir(parents=True, exist_ok=True)
 ORDNER_DATA.mkdir(parents=True, exist_ok=True)
 
