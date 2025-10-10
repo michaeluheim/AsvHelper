@@ -31,6 +31,7 @@ def rechnungspositionen_erstellen(
 
     rechnungsnummer = generiere_rechnungsnummer()
     pdf_output_path = ORDNER_DOCS / f"rechnung_{rechnungsnummer}.pdf"
+    pdf_output_path.parent.mkdir(parents=True, exist_ok=True) 
 
     rechnungspositionen = {}
     summe_netto_pos = 0.0
