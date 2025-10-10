@@ -19,12 +19,7 @@ import streamlit as st
 from pathlib import Path
 
 def rechnungspositionen_erstellen(
-    rechnung_dict: dict,
-    empfaenger: dict,
-    raummiete: float,
-    rabatt: float,
-    ust: float,
-    rechnungsgrund: str
+    rechnung_dict: dict
 ) -> dict:
     try:
         with open(PFAD_PREISLISTE_DATEN, "r", encoding="utf-8") as f:
@@ -42,7 +37,7 @@ def rechnungspositionen_erstellen(
     summe_brutto_pos = 0.0
 
     # Positionen aus Preisliste (Brutto) rückwärts rechnen
-    for pos_nr, (id_, menge) in enumerate(rechnung_dict.items(), start=1):
+    for pos_nr, (id_, menge) in enumerate(rechnung_dict["positionen"].items(), start=1):
         if str(id_) not in preisliste:
             st.warning(f"ID {id_} nicht in Preisliste gefunden.")
             continue
@@ -50,7 +45,7 @@ def rechnungspositionen_erstellen(
         artikel = preisliste[str(id_)]
         beschreibung = artikel["beschreibung"]
         einzelpreis_brutto = float(artikel["preis"])
-        einzelpreis_netto, einzel_ust = gross_to_net(einzelpreis_brutto, ust)
+        einzelpreis_netto, einzel_ust = gross_to_net(einzelpreis_brutto, rechnung_dict["ust"])
 
         gesamt_netto = round(einzelpreis_netto * menge, 2)
         gesamt_brutto = round(einzelpreis_brutto * menge, 2)
@@ -76,15 +71,15 @@ def rechnungspositionen_erstellen(
         }
 
     # Rabatt auf Netto-Summe der Positionen
-    rabatt_betrag_netto = round(summe_netto_pos * (rabatt / 100.0), 2)
+    rabatt_betrag_netto = round(summe_netto_pos * (rechnung_dict["rabatt"] / 100.0), 2)
 
     # Raummiete: Eingabe als Brutto interpretiert → rückwärts rechnen
-    raum_brutto = float(raummiete)
-    raum_netto, raum_ust = gross_to_net(raum_brutto, ust)
+    raum_brutto = float(rechnung_dict["raummiete"])
+    raum_netto, raum_ust = gross_to_net(raum_brutto, rechnung_dict["ust"])
 
     # Netto-Gesamt nach Rabatt + Raummiete
     netto_gesamt = round((summe_netto_pos - rabatt_betrag_netto) + raum_netto, 2)
-    ust_gesamt = round(netto_gesamt * (ust / 100.0), 2)
+    ust_gesamt = round(netto_gesamt * (rechnung_dict["ust"] / 100.0), 2)
     brutto_gesamt = round(netto_gesamt + ust_gesamt, 2)
 
     # Kopf speichern
@@ -95,7 +90,7 @@ def rechnungspositionen_erstellen(
         rechnungskopf = {}
 
     rechnungskopf[rechnungsnummer] = {
-        "empfaenger": empfaenger,
+        "empfaenger": rechnung_dict["empfaenger"],
         "datum": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "anzahl_positionen": len(rechnungspositionen) + (1 if raum_brutto > 0 else 0),
         "netto_gesamt": netto_gesamt,
@@ -118,11 +113,11 @@ def rechnungspositionen_erstellen(
     erzeuge_pdf(
         pdf_output_path=pdf_output_path,
         rechnungsnummer=rechnungsnummer,
-        empfaenger=empfaenger,
+        empfaenger=rechnung_dict["empfaenger"],
         positionen=rechnungspositionen,
-        rabatt_prozent=rabatt,
-        umsatzsteuer_prozent=ust,
-        rechnungsgrund=rechnungsgrund,
+        rabatt_prozent=rechnung_dict["rabatt"],
+        umsatzsteuer_prozent=rechnung_dict["ust"],
+        rechnungsgrund=rechnung_dict["rechnungsgrund"],
         raum_netto=raum_netto,
         raum_ust=raum_ust,
         raum_brutto=raum_brutto,

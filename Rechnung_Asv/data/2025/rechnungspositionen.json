@@ -1,0 +1,28 @@
+{
+  "20251010-013_1": {
+    "rechnungsnr": "20251010-013",
+    "positionsnr": 1,
+    "id": "1",
+    "beschreibung": "Bier, Radler 0,5l",
+    "menge": 5,
+    "einzelpreis_brutto": 3.0,
+    "einzelpreis_netto": 2.52,
+    "gesamt_netto": 12.6,
+    "ust_betrag": 2.4,
+    "gesamt_brutto": 15.0,
+    "erstellt_am": "2025-10-10 21:26:42"
+  },
+  "20251010-014_1": {
+    "rechnungsnr": "20251010-014",
+    "positionsnr": 1,
+    "id": "1",
+    "beschreibung": "Bier, Radler 0,5l",
+    "menge": 5,
+    "einzelpreis_brutto": 3.0,
+    "einzelpreis_netto": 2.52,
+    "gesamt_netto": 12.6,
+    "ust_betrag": 2.4,
+    "gesamt_brutto": 15.0,
+    "erstellt_am": "2025-10-10 21:26:58"
+  }
+}

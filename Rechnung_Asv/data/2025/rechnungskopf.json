@@ -1,0 +1,170 @@
+{
+  "20251010-001": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 20:25:13",
+    "anzahl_positionen": 1,
+    "netto_gesamt": 42.02,
+    "ust_gesamt": 7.98,
+    "brutto_gesamt": 50.0
+  },
+  "20251010-002": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 20:27:35",
+    "anzahl_positionen": 1,
+    "netto_gesamt": 42.02,
+    "ust_gesamt": 7.98,
+    "brutto_gesamt": 50.0
+  },
+  "20251010-003": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 20:33:28",
+    "anzahl_positionen": 1,
+    "netto_gesamt": 42.02,
+    "ust_gesamt": 7.98,
+    "brutto_gesamt": 50.0
+  },
+  "20251010-004": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 20:34:57",
+    "anzahl_positionen": 1,
+    "netto_gesamt": 42.02,
+    "ust_gesamt": 7.98,
+    "brutto_gesamt": 50.0
+  },
+  "20251010-005": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 20:42:32",
+    "anzahl_positionen": 1,
+    "netto_gesamt": 42.02,
+    "ust_gesamt": 7.98,
+    "brutto_gesamt": 50.0
+  },
+  "20251010-006": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 20:45:28",
+    "anzahl_positionen": 1,
+    "netto_gesamt": 42.02,
+    "ust_gesamt": 7.98,
+    "brutto_gesamt": 50.0
+  },
+  "20251010-007": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 20:47:21",
+    "anzahl_positionen": 1,
+    "netto_gesamt": 42.02,
+    "ust_gesamt": 7.98,
+    "brutto_gesamt": 50.0
+  },
+  "20251010-008": {
+    "empfaenger": {
+      "name": "Kapellenweg",
+      "adresse": "97247 Eisenheim",
+      "ort": "Michael Stühler"
+    },
+    "datum": "2025-10-10 20:58:30",
+    "anzahl_positionen": 0,
+    "netto_gesamt": 0.0,
+    "ust_gesamt": 0.0,
+    "brutto_gesamt": 0.0
+  },
+  "20251010-009": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 21:06:29",
+    "anzahl_positionen": 0,
+    "netto_gesamt": 0.0,
+    "ust_gesamt": 0.0,
+    "brutto_gesamt": 0.0
+  },
+  "20251010-010": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 21:09:43",
+    "anzahl_positionen": 0,
+    "netto_gesamt": 0.0,
+    "ust_gesamt": 0.0,
+    "brutto_gesamt": 0.0
+  },
+  "20251010-011": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 21:13:40",
+    "anzahl_positionen": 0,
+    "netto_gesamt": 0.0,
+    "ust_gesamt": 0.0,
+    "brutto_gesamt": 0.0
+  },
+  "20251010-012": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 21:16:27",
+    "anzahl_positionen": 0,
+    "netto_gesamt": 0.0,
+    "ust_gesamt": 0.0,
+    "brutto_gesamt": 0.0
+  },
+  "20251010-013": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 21:26:42",
+    "anzahl_positionen": 1,
+    "netto_gesamt": 10.08,
+    "ust_gesamt": 1.92,
+    "brutto_gesamt": 12.0
+  },
+  "20251010-014": {
+    "empfaenger": {
+      "name": "Katja Stühler",
+      "adresse": "Kapellenweg 13",
+      "ort": "97247 Eisenheim"
+    },
+    "datum": "2025-10-10 21:26:58",
+    "anzahl_positionen": 2,
+    "netto_gesamt": 52.1,
+    "ust_gesamt": 9.9,
+    "brutto_gesamt": 62.0
+  }
+}

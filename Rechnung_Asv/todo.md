@@ -1,7 +1,7 @@
 # todo
 
 -empfänger json mit Dropdown für Auswahl
--ein Rechnungsservice mit einem Eingabedict -> immer gleiche Struktur
+-ein Rechnungsservice mit einem Eingabedict 
+    -> immer gleiche Struktur massenupload ablösen
 -Auszahlungsbeleg
 -Upload und Download von Vorlagen und Preislisten
--test

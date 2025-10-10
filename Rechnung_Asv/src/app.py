@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import json
 import os
-
+from helpers import baue_rechnung_dict
 from config import PFAD_PREISLISTE_DATEN
 from services import rechnungspositionen_erstellen, import_new_data, rechnungspositionen_erstellen_csv_upload, rechnung_dict_csv
 from streamlit_option_menu import option_menu
@@ -71,30 +71,14 @@ def seite_rechnung_erstellen():
         if len(df_preisliste.columns) > 1:
             col_preis = df_preisliste.columns[1]
 
-    # Baue df_artikel mit LABEL
-    df_artikel = df_preisliste.reset_index()[["ID", col_beschr] + ([col_preis] if col_preis else [])]
-
-    def make_label(row):
-        if col_preis:
-            try:
-                preis_val = float(row[col_preis])
-                # Formatieren wie “xx,yy €”
-                preis_txt = f"{preis_val:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
-            except Exception:
-                preis_txt = str(row[col_preis])
-            return f"{row[col_beschr]}  —  {preis_txt}  (ID {row['ID']})"
-        else:
-            return f"{row[col_beschr]}  (ID {row['ID']})"
-
-    df_artikel["LABEL"] = df_artikel.apply(make_label, axis=1)
-    label_to_id = dict(zip(df_artikel["LABEL"], df_artikel["ID"]))
-    options_labels = list(label_to_id.keys())
-
     # Eingabetabelle für Artikel + Menge
     eingabe_df = pd.DataFrame({
         "Artikel": [None for _ in range(5)],
         "Menge": [None for _ in range(5)],
     })
+
+    label_to_id = df_preisliste["beschreibung"].to_dict()
+    options_labels = list(label_to_id.values())
 
     edited_df = st.data_editor(
         eingabe_df,
@@ -114,35 +98,22 @@ def seite_rechnung_erstellen():
             ),
         }
     )
-
+    
     # Baue rechnung_dict
-    rechnung_dict = {}
-    for row in edited_df.itertuples():
-        label = row.Artikel
-        menge = row.Menge
-        if label and pd.notna(label) and menge and pd.notna(menge):
-            try:
-                menge_int = int(menge)
-                if menge_int > 0:
-                    id_from_label = label_to_id.get(label)
-                    try:
-                        id_int = int(str(id_from_label))
-                    except Exception:
-                        id_int = id_from_label
-                    rechnung_dict[id_int] = rechnung_dict.get(id_int, 0) + menge_int
-            except (ValueError, TypeError):
-                continue
+    rechnung_dict = baue_rechnung_dict(
+        empfaenger=empfaenger,
+        rechnungsgrund=rechnungsgrund,
+        rabatt=rabatt,
+        raummiete=raummiete,
+        ust=ust,
+        rechnung_pos=edited_df)
+
 
     # Button zum Erstellen und Download anbieten
     if rechnung_dict:
         if st.button("Rechnung erstellen und speichern"):
             ergebnis = rechnungspositionen_erstellen(
-                rechnung_dict=rechnung_dict,
-                empfaenger=empfaenger,
-                raummiete=raummiete,
-                rabatt=rabatt,
-                ust=ust,
-                rechnungsgrund=rechnungsgrund
+                rechnung_dict=rechnung_dict
             )
             if ergebnis:
                 st.success("Rechnung wurde erstellt und gespeichert.")

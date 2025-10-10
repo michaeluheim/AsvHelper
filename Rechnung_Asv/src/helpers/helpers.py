@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import json
 from datetime import datetime
-from config import PFAD_RECHNUNGSPKOPF_DATEN
+from config import PFAD_RECHNUNGSPKOPF_DATEN, PFAD_PREISLISTE_DATEN
 
 def data_transformer(df: pd.DataFrame) -> dict:
     # Preis aus CSV (deutsche Schreibweise) nach float
@@ -35,3 +35,42 @@ def fmt_eur(v: float) -> str:
     s = f"{v:,.2f}"
     s = s.replace(",", "X").replace(".", ",").replace("X", ".")
     return f"{s} €"
+
+def baue_rechnung_dict(
+    empfaenger: dict,
+    rechnungsgrund: str,
+    rabatt: int,
+    raummiete: float,
+    ust: int,
+    rechnung_pos: pd.DataFrame,
+) -> dict:
+    # Baue mapping von Label zu ID
+    with open(PFAD_PREISLISTE_DATEN, "r", encoding="utf-8") as f:
+        preisliste_daten = json.load(f)
+        
+    label_to_id = {v["beschreibung"]: k for k, v in preisliste_daten.items()}
+
+    positionen = {}
+    for row in rechnung_pos.itertuples():
+        label = row.Artikel
+        menge = row.Menge
+        if label and pd.notna(label) and menge and pd.notna(menge):
+            try:
+                menge_int = int(menge)
+                if menge_int > 0:
+                    id_from_label = label_to_id.get(label)
+                    if id_from_label is None:
+                        continue  # Label nicht gefunden
+                    positionen[id_from_label] = positionen.get(id_from_label, 0) + menge_int
+            except (ValueError, TypeError):
+                continue  # Ungültige Menge → überspringen
+
+    rechnung_dict = {}
+    rechnung_dict["empfaenger"] = empfaenger
+    rechnung_dict["rechnungsgrund"] = rechnungsgrund
+    rechnung_dict["rabatt"] = rabatt
+    rechnung_dict["raummiete"] = raummiete
+    rechnung_dict["ust"] = ust
+    rechnung_dict["positionen"] = positionen
+
+    return rechnung_dict
