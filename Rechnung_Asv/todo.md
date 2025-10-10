@@ -4,4 +4,4 @@
 -ein Rechnungsservice mit einem Eingabedict -> immer gleiche Struktur
 -Auszahlungsbeleg
 -Upload und Download von Vorlagen und Preislisten
-
+-test
