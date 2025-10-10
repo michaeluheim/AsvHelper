@@ -1,0 +1,122 @@
+{
+  "1": {
+    "beschreibung": "Bier, Radler 0,5l",
+    "preis": 3.0
+  },
+  "2": {
+    "beschreibung": "Bier Tulpe 0,4l",
+    "preis": 2.5
+  },
+  "3": {
+    "beschreibung": "Bier Flasche 0,3l",
+    "preis": 2.0
+  },
+  "4": {
+    "beschreibung": "Hefeweizen",
+    "preis": 3.0
+  },
+  "5": {
+    "beschreibung": "Weißweinschorle 0,5l",
+    "preis": 3.5
+  },
+  "6": {
+    "beschreibung": "Weißweinschorle 0,25l",
+    "preis": 2.0
+  },
+  "7": {
+    "beschreibung": "Rotlingschorle 0,5l",
+    "preis": 3.5
+  },
+  "8": {
+    "beschreibung": "Rotlingschorle 0,25l",
+    "preis": 2.0
+  },
+  "9": {
+    "beschreibung": "Saftschorle 0,5l",
+    "preis": 2.0
+  },
+  "10": {
+    "beschreibung": "Limo, Spezi, ISO",
+    "preis": 2.0
+  },
+  "11": {
+    "beschreibung": "Wasser 1l Terra",
+    "preis": 2.0
+  },
+  "12": {
+    "beschreibung": "Wasser 0,5l Bad Brückenauer",
+    "preis": 1.5
+  },
+  "13": {
+    "beschreibung": "Cola 0,33l",
+    "preis": 1.5
+  },
+  "14": {
+    "beschreibung": "Cola 1l",
+    "preis": 4.0
+  },
+  "15": {
+    "beschreibung": "Schoppen weiß (Bacchus, Müller Silvaner)",
+    "preis": 3.0
+  },
+  "16": {
+    "beschreibung": "Rotwein 0,25l",
+    "preis": 3.0
+  },
+  "17": {
+    "beschreibung": "Rotling 0,25l",
+    "preis": 3.0
+  },
+  "18": {
+    "beschreibung": "Schnaps (Williams, Ramazotti) 2cl",
+    "preis": 1.5
+  },
+  "19": {
+    "beschreibung": "Asbach Cola",
+    "preis": 2.0
+  },
+  "20": {
+    "beschreibung": "Mitglied - Getränke vom ASV",
+    "preis": 50.0
+  },
+  "21": {
+    "beschreibung": "Mitglied - eigene Getränke",
+    "preis": 150.0
+  },
+  "22": {
+    "beschreibung": "kein Mitglied - Getränke vom ASV",
+    "preis": 75.0
+  },
+  "23": {
+    "beschreibung": "kein Mitglied - eigene Getränke",
+    "preis": 175.0
+  },
+  "24": {
+    "beschreibung": "Wein Flasche 1l",
+    "preis": 11.0
+  },
+  "25": {
+    "beschreibung": "Nüsse / Salzstangen",
+    "preis": 1.0
+  },
+  "26": {
+    "beschreibung": "Tee",
+    "preis": 1.0
+  },
+  "27": {
+    "beschreibung": "Kanne Kaffee",
+    "preis": 7.0
+  },
+  "28": {
+    "beschreibung": "Bratwurst mit Brötchen",
+    "preis": 3.5
+  },
+  "29": {
+    "beschreibung": "Bande klein 2m",
+    "preis": 119.0
+  },
+  "30": {
+    "beschreibung": "Bande groß 3m",
+    "preis": 149.0
+  }
+}
